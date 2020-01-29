@@ -48,3 +48,14 @@ python serial.py
 
 
 ![alt Pi_3](../images/PI_3.png)
+
+# Test avec le module Bee click (Zigbee)
+
+--- Les sources ---
+
+https://github.com/CPELyon/projet-iot-5a-2019-2020-cpetech/tree/master/gateway-code/Raspberry_PI/C
+
+Make
+./ReceiverEX
+
+
