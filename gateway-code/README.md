@@ -46,4 +46,4 @@ git *recuperer le code sur git*
 python serial.py
 
 
-![alt Beaglebone](../images/bbb.jpg)
+![alt Beaglebone](../images/PI_3.png)
