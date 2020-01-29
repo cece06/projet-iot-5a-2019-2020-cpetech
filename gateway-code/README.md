@@ -20,7 +20,7 @@ nano /boot/config.txt
 
 --ajouter ces lignes à la fin du fichier--
 
-dtoverlay=pi3-miniuart-bt
+dtoverlay=pi3-disable-bt
 enable_uart=1
 
 nano /boot/cmdline.txt
@@ -40,8 +40,9 @@ cd /opt
 mkdir py
 cd py
 
+--Récupérer le scripte python--
 
-git *recuperer le code sur git*
+https://github.com/CPELyon/projet-iot-5a-2019-2020-cpetech/tree/master/gateway-code/Raspberry_PI/Python
 
 python serial.py
 
