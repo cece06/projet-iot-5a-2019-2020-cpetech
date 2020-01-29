@@ -1,6 +1,9 @@
 # Configuration Raspberry PI (3 B+)
 
-///// Configuration PI /////
+Pour la communication entre l'arduino et le Raspberry Pi 3 nous optons pour un liaison série avec le protocol UART
+
+
+//// Configuration PI /////
 
 --se connecter à PI en ssh--
 
