@@ -36,3 +36,49 @@ Dans le payload, on associe les variables à leur valeur. Dans notre cas on util
 C'est la fonction post_request qui permet d'envoyer les données sous forme Json à Ubidots.
 
 L'envoi des données se fait toutes les x secondes (x = la valeur du time.sleep(x))
+
+
+# Configuration - Cloud Azure
+
+Dans cette partie, nous allons voir les solutions de cloud de Microsoft (Azure) pour visualiser les données des capteurs et aussi les programmes qui seront implémentés dans la passerelle pour envoyer les données au cloud.
+
+J’ai réalisé deux environnements différents pour visualiser les données des capteurs. Le premier est une base de donnée SQL serveur situé sur le cloud Azure et le second est un hub IOT d’Azure qui permet de connecter et gérer les appareils IoT. Il permet aussi de relier les appareils IoT aux services du cloud.
+
+## Environnement 1 - SQL serveur
+
+Dans un premier temps, il est nécessaire d’avoir accès à internet et d’avoir un compte Azure étudiant (Essaie de 12 mois avec 100$).
+
+Une fois connecté sur votre page de configuration Azure (https://portal.azure.com/#home), il faut créer un SQL serveur dans l’onglet “Toutes les ressources”  (Accueil>Toutes les ressources>Nouveau>créer une base de données SQL).
+Dans la configuration du serveur, nous avons plusieurs onglets. 
+Dans le premier “de base”, il faut:
+         - Choisir votre abonnement Azure (pour les étudiants)
+         - Créer un groupe de ressources (“CpeTechGroupRessource”)
+         - Mettre un nom de serveur (db)
+         - Créer un serveur avec utilisateur/mot de passe et emplacement en france
+         - Ne pas prendre pool élastique 
+         - Modifier la configuration “Calcul + stockage” de manière à payer moins cher. Pour cela il faut le cliquer dans configurer la bd puis cliquer sur la flèche “vous rechercher l’édition de base,....” puis sélectionner “standard” et enfin appliquer
+         - Et pour finir cliquer sur “vérifier et créer”
+         - Pour voir les informations sur votre base de données, il faut aller sur votre service sur Accueil>Toutes les ressources ainsi vous pouvez voir le nom de votre serveur (exemple : servercpe.database.windows.net)
+
+Pour passer à la création de la table dans la base de données, il faut installer préalablement “Microsoft SQL Server Management Studio” et avoir une connexion internet autre que CPE pour éviter d’être bloqué par le proxy. Une fois installé, il faut vous connecter sur le logiciel avec le nom du serveur, le nom de l’utilisateur, son mot de passe et aussi en second temps votre compte microsoft azure.
+
+
+Ensuite pour créer votre table dans la base de donnée, il est nécessaire de sélectionner votre base de donnée (servercpe>Bases de données>db) puis faire une nouvelle requête depuis le menu et exécuter les requêtes SQL suivante : 
+
+Pour la création de la table avec les six colonnes souhaitées dans notre situation:
+
+CREATE TABLE CpeTechTable
+(
+    date_reception DATETIME,
+    distance INT,
+    couleur VARCHAR(6),
+    rouge VARCHAR(6),
+    vert VARCHAR(6),
+    bleu VARCHAR(6),
+);
+
+Pour faire un test de fonctionnement de la base et afficher les données insérée:
+
+INSERT INTO CpeTechTable (date_reception,distance,couleur,rouge,vert,bleu )
+VALUES ('20200120 11:55:00 AM',50,'rouge','FF','00','00');
+SELECT * FROM CpeTechTable;
