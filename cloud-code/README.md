@@ -36,3 +36,5 @@ Dans le payload, on associe les variables à leur valeur. Dans notre cas on util
 C'est la fonction post_request qui permet d'envoyer les données sous forme Json à Ubidots.
 
 L'envoi des données se fait toutes les x secondes (x = la valeur du time.sleep(x))
+
+test-modif
