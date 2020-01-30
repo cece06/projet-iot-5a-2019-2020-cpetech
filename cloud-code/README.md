@@ -19,3 +19,20 @@ Pour l’affichage des données en temps réel, nous allons utiliser des Dashboa
 3 API : Pour pouvoir utiliser l’API, il nous faut générer un token, pour le générer il suffit de cliquer sur le profil tout en haut à gauche et d’entrer dans le menu “API Credentials”. Une petite fenêtre s’affiche avec la clé API et le Token. Dans notre cas il nous faut le token, donc on clique sur “click to show” pour l’obtenir.
 
 4 Dashboards : Pour créer un Dashboard, il faut dans le menu principal d’Ubidots aller dans Data puis Dashboard. On clique sur les 3 barres horizontales à gauche pour ouvrir le menu du dashboard puis le bouton + jaune pour en créer un. On le nomme puis on valide. On clique ensuite sur le bouton + bleu situé en haut à droite pour en créer un. On choisit ensuite le type de widget que l’on veut. Dans notre cas, on veut afficher de l’hexa donc du texte. On choisit donc metric comme widget. On associe ensuite le widget à une variable via le bouton “Add Variables”. On choisit la variable que l’on veut afficher et ensuite on donne un nom à ce dashboard. Dans notre cas la valeur de la variable reçu sera en décimal car l’hexa n’est pas une valeur connu par ubidots. Cependant dans le Dashboard, il est possible d’afficher autre chose que la valeur de la variable. Dans le cadre de notre utilisation, nous allons afficher un contexte. Pour cela il faut activer “Use the HTML editor” puis cliquer sur le bouton “Open editor”. La ligne 1 et 5 étant inutiles, nous les avons supprimées. La ligne où il y a {{value}}, on modifie le mot value par “context.hexa”. hexa est le nom du contexte que nous allons utiliser dans le script python. On accepte donc la modification et on valide en bas à droite pour créer le Dashboard.
+
+# Envoi des données
+
+Envoi des données par script Python au Cloud Ubidots : 
+
+Sur la Raspberry Pi ou BeagleBone, il faut lancer le script send.py. Celui-ci envoie des données grâce à l'API Ubidots.
+Pour l'API, il nous faut le token, le label du device et les labels de nos différentes variables. 
+
+La fonction get_hex permet de convertir un nombre décimal en entrée en nombre héxadécimal (dans notre cas on en a besoin)
+
+Les données de nos variables seront entrées dans les lignes "value_x", dans notre cas on génére aléatoirement des nombres car notre Raspberry Pi ne reçoit pas les données des Arduinos.
+
+Dans le payload, on associe les variables à leur valeur. Dans notre cas on utilise des contextes car l'affichage sur Ubidots en Héxadécimal n'est pas possible sinon. Pour ne pas utiliser de contextes il suffit de rentrer les variables comme la ligne de variable_5.
+
+C'est la fonction post_request qui permet d'envoyer les données sous forme Json à Ubidots.
+
+L'envoi des données se fait toutes les x secondes (x = la valeur du time.sleep(x))
