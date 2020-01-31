@@ -95,9 +95,10 @@ Une fois connecté sur votre page de configuration Azure (https://portal.azure.c
 
 Dans la configuration du Hub, nous avons plusieurs onglets. 
 Dans le premier “Base”, il faut:
-         - Choisir votre abonnement Azure (pour les étudiants)
-         - Créer un groupe de ressources (“CpeTechGroupRessource”)
-         - Mettre un nom du hub IoT (hubcpe)
+
+ - Choisir votre abonnement Azure (pour les étudiants)
+ - Créer un groupe de ressources (“CpeTechGroupRessource”)
+ - Mettre un nom du hub IoT (hubcpe)
 
 Pour les autres onglets, il faut laisser les données par défaut et ensuite nous pouvons vérifier et créer le hub IoT.
 
