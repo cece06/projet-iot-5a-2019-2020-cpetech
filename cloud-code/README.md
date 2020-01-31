@@ -68,7 +68,7 @@ Pour passer à la création de la table dans la base de données, il faut instal
 Ensuite pour créer votre table dans la base de donnée, il est nécessaire de sélectionner votre base de donnée (servercpe>Bases de données>db) puis faire une nouvelle requête depuis le menu et exécuter les requêtes SQL suivante : 
 
 Pour la création de la table avec les six colonnes souhaitées dans notre situation:
-
+```javascript
 CREATE TABLE CpeTechTable
 (
     date_reception DATETIME,
@@ -78,13 +78,13 @@ CREATE TABLE CpeTechTable
     vert VARCHAR(6),
     bleu VARCHAR(6),
 );
-
+```
 Pour faire un test de fonctionnement de la base et afficher les données insérée:
-
+```
 INSERT INTO CpeTechTable (date_reception,distance,couleur,rouge,vert,bleu )
 VALUES ('20200120 11:55:00 AM',50,'rouge','FF','00','00');
 SELECT * FROM CpeTechTable;
-
+```
 Pour finir, nous avons besoin d’un programme python afin d’injecter dans la base de données les informations des capteurs. Ce programme sera insérer sur la passerelle et sera adapter en fonction de la configuration des capteurs. Le nom du programme python est PythonAzure1.py (modification nécessaire entre <>) : 
 
 ## Environnement 2 - IoT hub
@@ -106,9 +106,9 @@ Un appareil IoT doit être inscrit dans le hub IoT pour pouvoir se connecter. Po
 
 
 ### Commande - Création de l’appareil:
-az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyPythonDevice
+```az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyPythonDevice```
 ### Commande - Obtenir la chaîne de connexion d’appareil (à sauvegarder dans un bloc note):
-az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
+```az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table```
 
 Pour finir, nous avons besoin d’un programme python pour envoyer les données des capteurs. Ce programme sera insérer sur la passerelle et sera adapter en fonction de la configuration des capteurs. Avant d’exécuter le programme, il est nécessaire d’installer la bibliothèques requises (pip install azure-iot-device).
 Le nom du programme python est PythonAzure2.py(modification de la variable CONNECTION_STRING est nécessaire).
