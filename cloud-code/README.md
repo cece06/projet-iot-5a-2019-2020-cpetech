@@ -49,7 +49,9 @@ J’ai réalisé deux environnements différents pour visualiser les données de
 Dans un premier temps, il est nécessaire d’avoir accès à internet et d’avoir un compte Azure étudiant (Essaie de 12 mois avec 100$).
 
 Une fois connecté sur votre page de configuration Azure (https://portal.azure.com/#home), il faut créer un SQL serveur dans l’onglet “Toutes les ressources”  (Accueil>Toutes les ressources>Nouveau>créer une base de données SQL).
+
 Dans la configuration du serveur, nous avons plusieurs onglets. 
+
 Dans le premier “de base”, il faut:
          - Choisir votre abonnement Azure (pour les étudiants)
          - Créer un groupe de ressources (“CpeTechGroupRessource”)
