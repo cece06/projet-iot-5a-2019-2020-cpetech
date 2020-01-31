@@ -53,14 +53,14 @@ Une fois connecté sur votre page de configuration Azure (https://portal.azure.c
 Dans la configuration du serveur, nous avons plusieurs onglets. 
 
 Dans le premier “de base”, il faut:
-         - Choisir votre abonnement Azure (pour les étudiants)
-         - Créer un groupe de ressources (“CpeTechGroupRessource”)
-         - Mettre un nom de serveur (db)
-         - Créer un serveur avec utilisateur/mot de passe et emplacement en france
-         - Ne pas prendre pool élastique 
-         - Modifier la configuration “Calcul + stockage” de manière à payer moins cher. Pour cela il faut le cliquer dans configurer la bd puis cliquer sur la flèche “vous rechercher l’édition de base,....” puis sélectionner “standard” et enfin appliquer
-         - Et pour finir cliquer sur “vérifier et créer”
-         - Pour voir les informations sur votre base de données, il faut aller sur votre service sur Accueil>Toutes les ressources ainsi vous pouvez voir le nom de votre serveur (exemple : servercpe.database.windows.net)
+ - Choisir votre abonnement Azure (pour les étudiants)
+ - Créer un groupe de ressources (“CpeTechGroupRessource”)
+ - Mettre un nom de serveur (db)
+ - Créer un serveur avec utilisateur/mot de passe et emplacement en france
+ - Ne pas prendre pool élastique 
+ - Modifier la configuration “Calcul + stockage” de manière à payer moins cher. Pour cela il faut le cliquer dans configurer la bd puis cliquer sur la flèche “vous rechercher l’édition de base,....” puis sélectionner “standard” et enfin appliquer
+ - Et pour finir cliquer sur “vérifier et créer”
+ - Pour voir les informations sur votre base de données, il faut aller sur votre service sur Accueil>Toutes les ressources ainsi vous pouvez voir le nom de votre serveur (exemple : servercpe.database.windows.net)
 
 Pour passer à la création de la table dans la base de données, il faut installer préalablement “Microsoft SQL Server Management Studio” et avoir une connexion internet autre que CPE pour éviter d’être bloqué par le proxy. Une fois installé, il faut vous connecter sur le logiciel avec le nom du serveur, le nom de l’utilisateur, son mot de passe et aussi en second temps votre compte microsoft azure.
 
