@@ -82,3 +82,37 @@ Pour faire un test de fonctionnement de la base et afficher les données insér�
 INSERT INTO CpeTechTable (date_reception,distance,couleur,rouge,vert,bleu )
 VALUES ('20200120 11:55:00 AM',50,'rouge','FF','00','00');
 SELECT * FROM CpeTechTable;
+
+Pour finir, nous avons besoin d’un programme python afin d’injecter dans la base de données les informations des capteurs. Ce programme sera insérer sur la passerelle et sera adapter en fonction de la configuration des capteurs. Le nom du programme python est PythonAzure1.py (modification nécessaire entre <>) : 
+
+## Environnement 2 - IoT hub
+
+Dans un premier temps, il est nécessaire d’avoir accès à internet et d’avoir un compte Azure étudiant (Essaie de 12 mois avec 100$).
+
+Une fois connecté sur votre page de configuration Azure (https://portal.azure.com/#home), il faut créer un Hub IoT dans l’onglet “Toutes les ressources”  (Accueil>Toutes les ressources>Nouveau>Hub IoT).
+
+Dans la configuration du Hub, nous avons plusieurs onglets. 
+Dans le premier “Base”, il faut:
+         - Choisir votre abonnement Azure (pour les étudiants)
+         - Créer un groupe de ressources (“CpeTechGroupRessource”)
+         - Mettre un nom du hub IoT (hubcpe)
+
+Pour les autres onglets, il faut laisser les données par défaut et ensuite nous pouvons vérifier et créer le hub IoT.
+
+Un appareil IoT doit être inscrit dans le hub IoT pour pouvoir se connecter. Pour cela, Il faut exécuter les commandes suivantes dans le CLI du Cloud Azure qui est en haut de la page à côté de la barre de recherche Azure.
+
+
+### Commande - Création de l’appareil:
+az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyPythonDevice
+### Commande - Obtenir la chaîne de connexion d’appareil (à sauvegarder dans un bloc note):
+az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
+
+Pour finir, nous avons besoin d’un programme python pour envoyer les données des capteurs. Ce programme sera insérer sur la passerelle et sera adapter en fonction de la configuration des capteurs. Avant d’exécuter le programme, il est nécessaire d’installer la bibliothèques requises (pip install azure-iot-device).
+Le nom du programme python est PythonAzure2.py(modification de la variable CONNECTION_STRING est nécessaire).
+
+En même temps que l'exécution du programme, nous pouvons voir la réception des donnée en utilisant une commande sur le CLI d’Azure:
+
+### Commande - Lecture des données (Remplaçant YourIoTHubName par le nom du hub):
+az iot hub monitor-events --hub-name {YourIoTHubName} --device-id MyPythonDevice
+
+Source : https://docs.microsoft.com/fr-fr/azure/iot-hub/quickstart-send-telemetry-python#code-try-0
