@@ -105,9 +105,9 @@ Pour les autres onglets, il faut laisser les données par défaut et ensuite nou
 Un appareil IoT doit être inscrit dans le hub IoT pour pouvoir se connecter. Pour cela, Il faut exécuter les commandes suivantes dans le CLI du Cloud Azure qui est en haut de la page à côté de la barre de recherche Azure.
 
 
-### Commande - Création de l’appareil:
+##### Commande - Création de l’appareil:
 ```az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyPythonDevice```
-### Commande - Obtenir la chaîne de connexion d’appareil (à sauvegarder dans un bloc note):
+##### Commande - Obtenir la chaîne de connexion d’appareil (à sauvegarder dans un bloc note):
 ```az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table```
 
 Pour finir, nous avons besoin d’un programme python pour envoyer les données des capteurs. Ce programme sera insérer sur la passerelle et sera adapter en fonction de la configuration des capteurs. Avant d’exécuter le programme, il est nécessaire d’installer la bibliothèques requises (pip install azure-iot-device).
@@ -115,7 +115,7 @@ Le nom du programme python est PythonAzure2.py(modification de la variable CONNE
 
 En même temps que l'exécution du programme, nous pouvons voir la réception des donnée en utilisant une commande sur le CLI d’Azure:
 
-### Commande - Lecture des données (Remplaçant YourIoTHubName par le nom du hub):
-az iot hub monitor-events --hub-name {YourIoTHubName} --device-id MyPythonDevice
+ ##### Commande - Lecture des données (Remplaçant YourIoTHubName par le nom du hub):
+```az iot hub monitor-events --hub-name {YourIoTHubName} --device-id MyPythonDevice```
 
-Source : https://docs.microsoft.com/fr-fr/azure/iot-hub/quickstart-send-telemetry-python#code-try-0
+Source : ```https://docs.microsoft.com/fr-fr/azure/iot-hub/quickstart-send-telemetry-python#code-try-0```
